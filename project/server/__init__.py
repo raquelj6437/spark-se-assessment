@@ -40,10 +40,10 @@ def root_site():
 
 @app.route('/users/index')
 def users():
-    showUsers = []
+    showUsers = {}
     users = User.query.all()
     for user in users:
-        showUsers.append([user.email,user.password])
+        showUsers[user.email] = user.password
     return showUsers
 
 from project.server.auth.views import auth_blueprint
